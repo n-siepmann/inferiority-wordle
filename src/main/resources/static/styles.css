@@ -1,0 +1,131 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2 Aug 2022, 17:48:11
+    Author     : Nick.Siepmann
+*/
+@import url("bootstrap.min.css");
+
+body{
+    font-family: 'Ubuntu Mono', monospace;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    /*background-color: var(--bs-gray-900);*/
+    background-image: linear-gradient(to right, var(--bs-gray-900),var(--bs-gray-600),var(--bs-gray-900));
+    padding: 20px;
+    width: 100%;
+    border-bottom: 4px solid var(--bs-gray-400);
+    text-transform: uppercase;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 8px;
+}
+footer{
+    text-align: center;
+    /*background-color: var(--bs-gray-900);*/
+    background-image: linear-gradient(to right, var(--bs-gray-800),var(--bs-gray-900),var(--bs-gray-800));
+    padding-top: 5px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+div.textdiv{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.errorspace{
+    display: block;
+}
+section.gameboard{
+    display: block;
+    min-height: 400px;
+    font-size: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input.form-control{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    text-align: center;
+    max-width: 400px;
+    align-self: center;
+    font-size: 1.3rem;
+}
+::placeholder{
+    text-align: center;
+}
+/*button{
+    margin: 10px;
+    font-size: 50px;
+}*/
+
+section.gameinput form div{
+    color: var(--bs-red);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+div.chartWithMarkerOverlay{
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn{
+    --bs-btn-font-size: 1.3rem;
+}
+@media screen and (max-width: 680px){
+    h2{
+        font-size:30px;
+    }
+}
+@media screen and (max-width: 480px){
+    h2{
+        font-size:20px;
+        letter-spacing: 4px;
+    }
+    input.form-control{
+        max-width: 300px;
+    }
+}
+@media screen and (max-width: 310px){
+    h2{
+        font-size:15px;
+        letter-spacing: 3px;
+    }
+    section.gameboard{
+        max-height: 250px;
+        font-size: 20px;
+    }
+    input.form-control{
+        font-size: 15px;
+    }
+    footer{
+        max-height: 30px;
+    }
+    .btn{
+        --bs-btn-font-size: 1rem;
+    }
+}
+@media screen and (max-height: 660px){
+    section.gameboard{
+        max-height: 200px;
+        font-size: 15px;
+    }
+    section.gameinput{
+        position: fixed;
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%);        
+    }
+}

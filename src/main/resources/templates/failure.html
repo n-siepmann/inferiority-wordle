@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Inferiority Wordle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Ubuntu+Mono&display=swap" rel="stylesheet">        <link href="styles.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <h2>Inferiority Wordle</h2> 
+            <div class="textdiv">
+            <h3>The word you were looking for was <b><span th:text="${word}"></span></b></h3>
+            <div th:if="${avguesses > 0}">Other users got this in an average of <span th:text="${avguesses}"></span> guesses and in an average time of <span th:text="${avtime}"></span> seconds.</div>
+            <div>All words taken from the official Wordle wordlist.</div>
+            <br>
+            </div>
+            <a href="/newgame"><button type="button" class="btn btn-primary">Try again</button></a>
+        </div>
+    <footer>
+        <p>Nick Siepmann | 2022</p>
+    </footer>
+        <script src="bootstrap.min.css"></script>
+
+    </body>
+</html>
