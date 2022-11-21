@@ -27,17 +27,8 @@ public class Game {
         this.solved = "*****".toCharArray();
         this.guessLog = new ArrayList<>();
         this.timer = new Timer();
-
     }
 
-//    //for demonstration purposes 
-//    public Game(String target, WordList wordlist) {
-//
-//        this.target = target.toUpperCase().toCharArray();
-//        this.solved = "*****".toCharArray();
-//        this.guessLog = new ArrayList<>();
-//        this.timer = new Timer();
-//    }
 
     public void setTarget(String word) {
         this.target = word.toUpperCase().toCharArray();
@@ -61,7 +52,6 @@ public class Game {
 
     public boolean checkGuess(String guess) {
         char[] guessArr = guess.toUpperCase().toCharArray();
-//        System.out.println("target " + this.getTarget());
         for (int i = 0; i < 5; i++) {
             if (guessArr[i] == target[i]) {
                 solved[i] = target[i];

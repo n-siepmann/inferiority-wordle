@@ -7,100 +7,102 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head>
         <title>Inferiority Wordle</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="bootstrap.min.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Ubuntu+Mono&display=swap" rel="stylesheet">        <link href="styles.css" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
-            
-        <style>
-        .chartWithMarkerOverlay  {
-               position: relative;
-               width: 900px;
-               margin-left: auto;
-               margin-right: auto;
-        }
-       .overlay-marker {
-           width: 10px;
-           height: 10px;
-           position: absolute;
-           top: 53px;   /* chartArea top */
-           left: 528px; /* chartArea left */
-       }
-        .dot {
-            height: 13px;
-            width: 13px;
-            background-color: #f39c12;
-            border-radius: 50%;
-            display: inline-block;
-        }
-       </style>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript"  th:inline="javascript">
-        google.charts.load('current', {packages : [ 'corechart', 'scatter' ]});
-        google.charts.setOnLoadCallback(drawChart);
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link href="bootstrap.min.css" rel="stylesheet">
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Ubuntu+Mono&display=swap" rel="stylesheet">        <link href="styles.css" rel="stylesheet">
+                                    <link href="styles.css" rel="stylesheet">
 
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('number', 'Guesses');
-        data.addColumn('number', 'Time');
-        data.addRows([[${scores}]]);
-        data.addRows([[${userScore}]]);
-        
-        var options = {
-          hAxis: {title: 'Time (seconds)', titleTextStyle:{color: '#fff', fontSize: 20}, minValue: 0, format: 'decimal', textStyle:{color: '#fff', fontSize: 15}},
-          vAxis: {title: 'Guesses', titleTextStyle:{color: '#fff', fontSize: 20}, minValue: 0, maxValue: 6, format: 'decimal', textStyle:{color: '#fff', fontSize: 15}},
-          legend: 'none',
-          backgroundColor: '#222',
-          font: 'Ubuntu Mono',
-          chartArea: {
-          backgroundColor: '#222',
-          width: 780,
-          height: 400,
-          top: 10
-              },
-        color: '#3498db',
-        pointSize: 9
-        };
-        
-        function placeMarker(dataTable) {
-            var cli = this.getChartLayoutInterface();
-            var chartArea = cli.getChartAreaBoundingBox();
-            
-            document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(dataTable.getNumberOfRows() -1 , 1))) - 11 + "px";
-            document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(dataTable.getValue(dataTable.getNumberOfRows() -1 , 0))) - 6 + "px";
-      };
-        
-            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-            google.visualization.events.addListener(chart, 'ready',
-              placeMarker.bind(chart, data));
-            chart.draw(data, options);
-      }
-    </script>
+                                        <style>
+                                            .chartWithMarkerOverlay  {
+                                                position: relative;
+                                                width: 900px;
+                                                margin-left: auto;
+                                                margin-right: auto;
+                                            }
+                                            .overlay-marker {
+                                                width: 10px;
+                                                height: 10px;
+                                                position: absolute;
+                                                top: 53px;   /* chartArea top */
+                                                left: 528px; /* chartArea left */
+                                            }
+                                            .dot {
+                                                height: 13px;
+                                                width: 13px;
+                                                background-color: #f39c12;
+                                                border-radius: 50%;
+                                                display: inline-block;
+                                            }
+                                        </style>
 
-    </head>
-    <body>
-        <header>
-            <h2>Inferiority Wordle</h2> 
-        </header>
-        <section>
-            <div class="textdiv"> 
-            <h3 class="result">You took <span th:text="${userGuesses}"></span> guess<span th:if="${userGuesses > 1}">es</span> and <span th:text="${userTime}"></span> second<span th:if="${userTime > 1}">s</span> to guess <span th:text="${word}"></span></h3>
-            </div>
-            <!--<div>score:<span th:text="${scores}"></span></div>
-            <div>userscore:<span th:text="${userScore}"></span>-->
-            <div class="chartWithMarkerOverlay">
-                <div id="chart_div" style="width: 900px; height: 500px;"></div>
-                <div class="overlay-marker">
-                    <span class="dot"></span>
-                </div>
-            </div>
-            <a href="/newgame"><button type="button" class="btn btn-primary">Try again</button></a>
-        </section>
-    <footer>
-        <p>Nick Siepmann | 2022</p>
-    </footer>
-    <script src="bootstrap.min.css"></script>
-    </body>
-</html>
+
+                                        </head>
+                                        <body>
+                                            <header>
+                                                <h2>Inferiority Wordle</h2> 
+                                            </header>
+                                            <section>
+                                                <div class="textdiv"> 
+                                                    <h3 class="result">You took <span th:text="${userGuesses}"></span> guess<span th:if="${userGuesses > 1}">es</span> and <span th:text="${userTime}"></span> second<span th:if="${userTime > 1}">s</span> to guess <span th:text="${word}"></span></h3>
+                                                </div>
+                                                <div class="chartWithMarkerOverlay">
+                                                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                                                    <div class="overlay-marker">
+                                                        <span class="dot"></span>
+                                                    </div>
+                                                </div>
+                                                <a href="/newgame"><button type="button" class="btn btn-primary">Try again</button></a>
+                                            </section>
+                                            <footer>
+                                                <p>Nick Siepmann | 2022</p>
+                                            </footer>
+
+                                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                            <script type="text/javascript"  th:inline="javascript">
+                                                google.charts.load('current', {packages: ['corechart', 'scatter']});
+                                                google.charts.setOnLoadCallback(drawChart);
+
+                                                function drawChart() {
+                                                    var data = new google.visualization.DataTable();
+                                                    data.addColumn('number', 'Guesses');
+                                                    data.addColumn('number', 'Time');
+                                                            data.addRows([[${scores}
+                                                            ]]);
+                                                            data.addRows([[${userScore}
+                                                            ]]);
+
+                                                    var options = {
+                                                        hAxis: {title: 'Time (seconds)', titleTextStyle: {color: '#fff', fontSize: 20}, minValue: 0, format: 'decimal', textStyle: {color: '#fff', fontSize: 15}},
+                                                        vAxis: {title: 'Guesses', titleTextStyle: {color: '#fff', fontSize: 20}, minValue: 0, maxValue: 6, format: 'decimal', textStyle: {color: '#fff', fontSize: 15}},
+                                                        legend: 'none',
+                                                        backgroundColor: '#222',
+                                                        font: 'Ubuntu Mono',
+                                                        chartArea: {
+                                                            backgroundColor: '#222',
+                                                            width: 780,
+                                                            height: 400,
+                                                            top: 10
+                                                        },
+                                                        color: '#3498db',
+                                                        pointSize: 9
+                                                    };
+
+                                                    function placeMarker(dataTable) {
+                                                        var cli = this.getChartLayoutInterface();
+                                                        var chartArea = cli.getChartAreaBoundingBox();
+
+                                                        document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(dataTable.getNumberOfRows() - 1, 1))) - 11 + "px";
+                                                        document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(dataTable.getValue(dataTable.getNumberOfRows() - 1, 0))) - 6 + "px";
+                                                    }
+                                                    ;
+
+                                                    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+                                                    google.visualization.events.addListener(chart, 'ready',
+                                                            placeMarker.bind(chart, data));
+                                                    chart.draw(data, options);
+                                                }
+                                            </script>
+                                        </body>
+                                        </html>

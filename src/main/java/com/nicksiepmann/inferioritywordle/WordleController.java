@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -22,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class WordleController {
 
-    private final ScoreController scoreController;
+    private final ScoreService scoreService;
     private final WordList wordList;
     private Game game;
 
     @Autowired
-    public WordleController(ScoreController scoreController, WordList wordList) {
-        this.scoreController = scoreController;
+    public WordleController(ScoreService scoreService, WordList wordList) {
+        this.scoreService = scoreService;
         this.wordList = wordList;
         this.game = new Game(this.wordList);
     }
@@ -64,7 +63,6 @@ public class WordleController {
     public String tryGuess(@ModelAttribute Guess guess, Model model) {
         model.addAttribute("guess", guess);
 
-//        System.out.println("Guess entered: " + guess.getText());
         String err = this.game.validGuess(guess.getText());
         model.addAttribute("error", err);
 
@@ -74,17 +72,17 @@ public class WordleController {
             if (this.game.isSolved()) {
                 Score userScore = new Score(this.game.getGuessCount(), this.game.getTime(), this.game.getTarget());
                 model.addAttribute("word", this.game.getTarget());
-                model.addAttribute("scores", this.scoreController.getScoresList());
+                model.addAttribute("scores", this.scoreService.getScoresList());
                 model.addAttribute("userScore", List.of(List.of(userScore.getTime(), userScore.getGuesses())));
                 model.addAttribute("userGuesses", userScore.getGuesses());
                 model.addAttribute("userTime", userScore.getTime());
-                this.scoreController.saveScore(userScore); //because scores list is not ordered chronologically, need to add last score to the chart manually before saving to db
+                this.scoreService.saveScore(userScore); //because scores list is not ordered chronologically, need to add last score to the chart manually before saving to db
                 return "success";
             }
 
             if (this.game.getGuessCount() > 5) {
                 model.addAttribute("word", this.game.getTarget());
-                long[] average = scoreController.getAverageScoreByWord(this.game.getTarget());
+                long[] average = scoreService.getAverageScoreByWord(this.game.getTarget());
                 model.addAttribute("avguesses", average[0]);
                 model.addAttribute("avtime", average[1]);
                 return "failure";

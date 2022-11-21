@@ -21,14 +21,17 @@ public class WordList {
 
     private String[] words;
     private Random random;
+    private final Logger logger;
 
     public WordList() {
         ObjectMapper objectMapper = new ObjectMapper();
         this.random = new Random();
+        this.logger = Logger.getLogger(Game.class.getName());
+        
         try {
             this.words = objectMapper.readValue(this.getClass().getClassLoader().getResource("static/wordleList.json"), String[].class);
         } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
 
     }

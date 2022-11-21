@@ -5,8 +5,8 @@
 package com.nicksiepmann.inferioritywordle;
 
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -17,7 +17,7 @@ import org.springframework.data.annotation.Id;
 public class Score {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     private final long guesses;

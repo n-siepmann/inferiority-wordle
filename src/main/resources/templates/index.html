@@ -35,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <form action="#" 
               th:action="@{/guess}" 
               th:object="${guess}"
-              method="post">
+              th:method="post">
                 <div class="errorspace"><span class="text-danger" th:if="${error != 'valid'}" th:text="${error}"></span><br></div>
                 <input type="text" class="form-control" field="*{text}" name="text" placeholder="*****">
                 <button type="submit" class="btn btn-primary">Submit Guess</button>
@@ -44,7 +44,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <footer>
         <p>Nick Siepmann | 2022</p>
     </footer>
-        <script src="bootstrap.min.css"></script>
-
     </body>
 </html>
