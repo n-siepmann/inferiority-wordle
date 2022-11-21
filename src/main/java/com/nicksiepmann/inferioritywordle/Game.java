@@ -4,10 +4,8 @@
  */
 package com.nicksiepmann.inferioritywordle;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 /**
  *
@@ -29,9 +27,15 @@ public class Game {
         this.timer = new Timer();
     }
 
-
     public void setTarget(String word) {
         this.target = word.toUpperCase().toCharArray();
+    }
+
+    public void setNewTarget() {
+        this.target = wordList.getRandomWord().toCharArray();
+        this.solved = "*****".toCharArray();
+        this.guessLog = new ArrayList<>();
+        this.timer = new Timer();
     }
 
     public String validGuess(String guess) {

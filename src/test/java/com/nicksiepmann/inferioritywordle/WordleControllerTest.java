@@ -15,8 +15,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  *
@@ -29,14 +29,12 @@ public class WordleControllerTest {
 
     WordleController underTest;
 
-//    @LocalServerPort
-//    private int port;
-//    @Autowired
-//    private TestRestTemplate restTemplate;
     @Mock
     ScoreService scoreService;
     @Mock
     WordList wordList;
+    @Autowired
+    Game game;
 
     @Autowired
     MockMvc model;
@@ -45,25 +43,27 @@ public class WordleControllerTest {
 //    }
     @BeforeEach
     public void setUp() {
-        given(wordList.getRandomWord()).willReturn("testy");
-        this.underTest = new WordleController(scoreService, wordList);
+        this.underTest = new WordleController(scoreService, wordList, game);
     }
-//
-//    @AfterEach
-//    public void tearDown() {
-//    }
 
     /**
-     * Test of gamePage method, of class WordleController.
+     * // * Test of gamePage method, of class WordleController. //
      */
     @Test
-    public void testGamePage() throws Exception {
-        //given
-        //when
-        //then
-        this.model.perform(get("/")).andDo(print()).andExpect(status().isOk());
+    public void returnsIndexWhenActiveGame() throws Exception {
+//        given
+//        when
+        this.model.perform(get("/")).andDo(print()).andExpect(view().name("index"));
+//        then
     }
 
+//    @Test
+//    public void testGamePage() throws Exception {
+//        //given
+//        //when
+//        //then
+//        this.model.perform(get("/")).andDo(print()).andExpect(status().isOk());
+//    }
     /**
      * Test of cheat method, of class WordleController.
      */

@@ -11,10 +11,8 @@ package com.nicksiepmann.inferioritywordle;
 
 public class Guess  {
     private String text;
-    private final WordList wordList;
 
-    public Guess(String text, WordList wordList) {
-        this.wordList = wordList;
+    public Guess(String text) {
         this.text = text.strip().toLowerCase();
     }
 

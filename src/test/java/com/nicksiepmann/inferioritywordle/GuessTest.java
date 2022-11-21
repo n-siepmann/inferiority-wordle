@@ -5,9 +5,7 @@
 package com.nicksiepmann.inferioritywordle;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -16,21 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GuessTest {
     
     private Guess underTest;
-    private WordList wordList;
-    
-    @BeforeEach
-    @Autowired
-    void loadWordlist() {
-        this.wordList = new WordList();
-    }
-    
+
     @Test
     void guessShouldBeLowerCaseWithNoSpace() {
         //given
         String input = " Testy ";
         String output = "testy";
         //when
-        this.underTest = new Guess(input, this.wordList);
+        this.underTest = new Guess(input);
 
         //then
         assertThat(this.underTest.getText().equals(output));

@@ -35,6 +35,14 @@ public class GameTest {
         assertThat(this.underTest.getTarget().equals(word.toUpperCase())).isTrue();
     }
 
+    @Test
+    void canSetNewTargetWord() {
+        String word = "testy";
+        this.underTest.setTarget(word);
+        this.underTest.setNewTarget();
+        assertThat(this.underTest.getTarget().equals(word.toUpperCase())).isFalse();
+    }
+
     @ParameterizedTest
     @CsvSource({
         "testy, testy, valid",
@@ -48,7 +56,7 @@ public class GameTest {
     @ParameterizedTest
     @CsvSource({
         "testy, tiars, bendy, Please enter a word which matches the found letters.",
-    "testy, tiars, third, valid"})
+        "testy, tiars, third, valid"})
     void canValidateSecondGuess(String target, String guess, String secondguess, String returned) {
         this.underTest.setTarget(target);
         this.underTest.checkGuess(guess);

@@ -26,10 +26,10 @@ public class WordleController {
     private Game game;
 
     @Autowired
-    public WordleController(ScoreService scoreService, WordList wordList) {
+    public WordleController(ScoreService scoreService, WordList wordList, Game newGame) {
         this.scoreService = scoreService;
         this.wordList = wordList;
-        this.game = new Game(this.wordList);
+        this.game = newGame;
     }
 
     @GetMapping("/")
@@ -38,15 +38,17 @@ public class WordleController {
             model.addAttribute("guesses", this.game.getGuessLog());
             return "index";
         }
-        this.game = new Game(this.wordList);
+//        this.game = new Game(this.wordList);
+        this.game.setNewTarget();
         model.addAttribute("guesses", this.game.getGuessLog());
         return "redirect:/";
     }
 
     @GetMapping("/cheat")
     public String cheat(@RequestParam(value = "name", defaultValue = "cheat") String name, Model model) {
-        this.game = new Game(this.wordList);
-        this.game.setTarget(name);        
+//        this.game = new Game(this.wordList);
+        this.game.setNewTarget();
+        this.game.setTarget(name);
         System.out.println(this.game.getTarget());
         model.addAttribute("guesses", this.game.getGuessLog());
         return "index";
@@ -54,13 +56,14 @@ public class WordleController {
 
     @GetMapping("/newgame")
     public String newGame(Model model) {
-        this.game = new Game(this.wordList);
+//        this.game = new Game(this.wordList);
+        this.game.setNewTarget();
         model.addAttribute("guesses", this.game.getGuessLog());
         return "redirect:/";
     }
 
     @PostMapping("/guess")
-    public String tryGuess(@ModelAttribute Guess guess, Model model) {
+    public String tryGuess(@ModelAttribute Guess guess, Model model) { //add @Valid
         model.addAttribute("guess", guess);
 
         String err = this.game.validGuess(guess.getText());
