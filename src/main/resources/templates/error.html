@@ -15,14 +15,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link href="styles.css" rel="stylesheet">
         <meta http-equiv="refresh" content="1; URL=/" />
     </head>
-    <header>
-        <h2>Inferiority Wordle</h2> 
-    </header>
+    <header th:replace="fragments.html :: header"/>
     <div class="textdiv">      
         <h3>An error has occurred. If you are not redirected, click here to return to <a href="/">Inferiority Wordle</a>.</h3>
     </div>
-    <footer>
-        <p>Nick Siepmann | 2022</p>
-    </footer>
+    <footer th:replace="fragments.html :: footer"/>
     </body>
 </html>

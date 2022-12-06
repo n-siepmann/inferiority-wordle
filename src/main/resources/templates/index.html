@@ -19,9 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="manifest" href="site.webmanifest">
     </head>
     <body>
-        <header>
-            <h2>Inferiority Wordle</h2>         
-        </header>
+    <header th:replace="fragments.html :: header"/>
         <section class="gameboard">
                 <table class="table table-hover">
                     <tbody>
@@ -37,12 +35,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
               th:object="${guess}"
               th:method="post">
                 <div class="errorspace"><span class="text-danger" th:if="${error != 'valid'}" th:text="${error}"></span><br></div>
+                <label for="text" class="visually-hidden">Input your guess:</label>
                 <input type="text" class="form-control" field="*{text}" name="text" placeholder="*****">
                 <button type="submit" class="btn btn-primary">Submit Guess</button>
             </form>
         </section>
-    <footer>
-        <p>Nick Siepmann | 2022</p>
-    </footer>
+    <footer th:replace="fragments.html :: footer"/>
     </body>
 </html>

@@ -77,8 +77,6 @@ public class WordleController {
                 model.addAttribute("word", this.game.getTarget());
                 model.addAttribute("scores", this.scoreService.getScoresList());
                 model.addAttribute("userScore", List.of(List.of(userScore.getTime(), userScore.getGuesses())));
-                model.addAttribute("userGuesses", userScore.getGuesses());
-                model.addAttribute("userTime", userScore.getTime());
                 this.scoreService.saveScore(userScore); //because scores list is not ordered chronologically, need to add last score to the chart manually before saving to db
                 return "success";
             }
@@ -94,6 +92,16 @@ public class WordleController {
 
         model.addAttribute("guesses", this.game.getGuessLog());
         return "index";
+    }
+
+    @GetMapping("/testchart")
+    public String showSuccessPage(Model model) {
+        Score userScore = new Score(this.game.getGuessCount(), this.game.getTime(), this.game.getTarget());
+        model.addAttribute("word", this.game.getTarget());
+        model.addAttribute("scores", this.scoreService.getScoresList());
+        model.addAttribute("userScore", List.of(List.of(20, 4)));
+        this.scoreService.saveScore(userScore); //because scores list is not ordered chronologically, need to add last score to the chart manually before saving to db
+        return "success";
     }
 
 }

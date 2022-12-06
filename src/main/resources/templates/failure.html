@@ -15,8 +15,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link href="styles.css" rel="stylesheet">
     </head>
     <body>
+        <header th:replace="fragments.html :: header"/>
         <div>
-            <h2>Inferiority Wordle</h2> 
             <div class="textdiv">
             <h3>The word you were looking for was <b><span th:text="${word}"></span></b></h3>
             <div th:if="${avguesses > 0}">Other users got this in an average of <span th:text="${avguesses}"></span> guesses and in an average time of <span th:text="${avtime}"></span> seconds.</div>
@@ -25,8 +25,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
             <a href="/newgame"><button type="button" class="btn btn-primary">Try again</button></a>
         </div>
-    <footer>
-        <p>Nick Siepmann | 2022</p>
-    </footer>
+    <footer th:replace="fragments.html :: footer"/>
     </body>
 </html>

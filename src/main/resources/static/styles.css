@@ -77,13 +77,43 @@ section.gameinput form div{
     font-weight: bold;
     letter-spacing: 1px;
 }
-div.chartWithMarkerOverlay{
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .btn{
     --bs-btn-font-size: 1.3rem;
 }
+
+
+.overlay-marker {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 53px;   /* chartArea top */
+    left: 528px; /* chartArea left */
+}
+.dot {
+    height: 13px;
+    width: 13px;
+    background-color: #f39c12;
+    border-radius: 50%;
+    display: inline-block;
+
+}
+
+.chartWithMarkerOverlay  {
+    position: relative;
+    width: 100%;
+
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*.jschart {
+    width: 100%;
+    max-width:900px;
+}*/
+
+
 @media screen and (max-width: 680px){
     h2{
         font-size:30px;
@@ -126,6 +156,6 @@ div.chartWithMarkerOverlay{
         position: fixed;
         bottom: 50px;
         left: 50%;
-        transform: translate(-50%);        
+        transform: translate(-50%);
     }
 }
