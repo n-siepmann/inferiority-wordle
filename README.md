@@ -1,4 +1,4 @@
-##What and Why is Inferiority Wordle?
+## What and Why is Inferiority Wordle?
 During the pandemic, a lot of people took solace in the simple, self-contained challenge of Wordle. They could share their score for the day with their friends if they chose to, but with its neat little stats panel, Wordle only really invites you to compete with yourself. 
 
 Inferiority Wordle (IW) started out as a simple clone using the same wordlist, but, taking a little inspiration from Bennett Foddy, I decided to instead take its simple premise and make it Evil:
@@ -13,7 +13,7 @@ All of the design decisions in this game could conceivably have been made in goo
 
 Enjoy!
 
-#What I learned
+# What I learned
 - Google Cloud Datastore
 - Thymeleaf forms
 - chart.js
