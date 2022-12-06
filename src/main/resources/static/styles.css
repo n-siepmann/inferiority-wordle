@@ -83,35 +83,19 @@ section.gameinput form div{
 }
 
 
-.overlay-marker {
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 53px;   /* chartArea top */
-    left: 528px; /* chartArea left */
-}
-.dot {
-    height: 13px;
-    width: 13px;
-    background-color: #f39c12;
-    border-radius: 50%;
-    display: inline-block;
-
-}
-
-.chartWithMarkerOverlay  {
-    position: relative;
-    width: 100%;
-
-    
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/*.jschart {
+.jschart {
     width: 100%;
     max-width:900px;
-}*/
+    /*max-height: 500px;*/
+}
+
+.jschart canvas {
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    margin-bottom: 10px;
+}
 
 
 @media screen and (max-width: 680px){
